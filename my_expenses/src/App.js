@@ -1,6 +1,11 @@
+//imports
 import ExpenseItem from "./Components/ExpenseItem";
+
 //------------------------
+
 export class ExpenseItems {
+	//creates class for Expense Items
+
 	price;
 	item;
 	description;
@@ -13,9 +18,9 @@ export class ExpenseItems {
 }
 //create test Expense
 const testExpense = new ExpenseItems(10, "Water Bill", "Bill for having water");
-console.log(testExpense);
 
 function App() {
+	//render the page
 	return (
 		<div className="App">
 			<ExpenseItem price={testExpense.price} description={testExpense.description} item={testExpense.item}></ExpenseItem>
