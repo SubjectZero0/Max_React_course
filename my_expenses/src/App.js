@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import ExpenseItem from "./Components/ExpenseItem";
+//------------------------
+export class ExpenseItems {
+	price;
+	item;
+	description;
+
+	constructor(price, item, description) {
+		this.price = price;
+		this.item = item;
+		this.description = description;
+	}
+}
+//create test Expense
+const testExpense = new ExpenseItems(10, "Water Bill", "Bill for having water");
+console.log(testExpense);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<ExpenseItem price={testExpense.price} description={testExpense.description} item={testExpense.item}></ExpenseItem>
+		</div>
+	);
 }
 
 export default App;
