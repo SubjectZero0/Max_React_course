@@ -1,5 +1,6 @@
 //imports
 import ExpenseItem from "./Components/ExpenseComponents/ExpenseItem";
+import NewExpense from "./Components/NewExpenseComponents/NewExpense";
 //------------------------
 
 export class ExpenseItems {
@@ -24,10 +25,12 @@ function App() {
 	//render the page
 	return (
 		<div className="App">
+			<NewExpense />
+
 			<ExpenseItem
-				price={testExpense.price}
-				description={testExpense.description}
 				item={testExpense.item}
+				description={testExpense.description}
+				price={testExpense.price}
 				date={testExpense.date}
 			></ExpenseItem>
 		</div>
