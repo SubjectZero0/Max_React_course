@@ -7,6 +7,7 @@
 	margin: 1rem 0;
 	border-radius: 12px;
 	background-color: #4b4b4b;
+	color: rgb(226, 213, 213);
 }
 
 .expense-item__description {
