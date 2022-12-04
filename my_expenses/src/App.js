@@ -1,9 +1,10 @@
 //imports
-import ExpenseItem from "./Components/ExpenseComponents/ExpenseItem";
 import NewExpense from "./Components/NewExpenseComponents/NewExpense";
+import Expenses from "./Components/ExpenseComponents/Expenses";
+import { useState } from "react";
 //------------------------
 
-export class ExpenseItems {
+export class Expense {
 	//creates class for Expense Items
 
 	price;
@@ -19,20 +20,31 @@ export class ExpenseItems {
 	}
 }
 //create test Expense
-const testExpense = new ExpenseItems(10, "Water Bill", "Bill for having water");
+const expenses = [new Expense(10, "Water Bill", "Bill for having water")];
 
 function App() {
+	const [expenseState, setExpenseState] = useState(expenses);
+
+	//Adds handler on Add expense event
+	const addExpense = (savedExpenseData) => {
+		const addedExpense = new Expense(
+			savedExpenseData.price,
+			savedExpenseData.item,
+			savedExpenseData.description,
+			new Date(savedExpenseData.date)
+		);
+		setExpenseState((prevExpenses) => {
+			return [addedExpense, ...prevExpenses];
+		});
+	};
+
 	//render the page
 	return (
 		<div className="App">
-			<NewExpense />
+			{/*NewExpense component contains the ExpenseForm component and gets the data entered, through state changes.   */}
+			<NewExpense onAddExpenseHandler={addExpense} />
 
-			<ExpenseItem
-				item={testExpense.item}
-				description={testExpense.description}
-				price={testExpense.price}
-				date={testExpense.date}
-			></ExpenseItem>
+			<Expenses items={expenseState} />
 		</div>
 	);
 }
