@@ -8,17 +8,18 @@ const itemState = {
 	date: "",
 };
 
-function ExpenseForm() {
+function ExpenseForm(props) {
 	//Hook "useState" for the entire form.
 	const [formState, setFormState] = useState(itemState);
 
 	//Handler for event => on form input. State updater.
 	const formInputHandler = (e) => {
-		const targetKey = e.target.id;
+		const targetedKey = e.target.id;
+
 		setFormState((previousState) => {
 			return {
 				...previousState,
-				[targetKey]: e.target.value,
+				[targetedKey]: e.target.value,
 			};
 		});
 	};
@@ -32,6 +33,9 @@ function ExpenseForm() {
 		const submitData = {
 			...formState,
 		};
+
+		//communicate with parent component (NewExpense) and transfer the entered data.
+		props.saveOnSubmitHandler(submitData);
 
 		//reset state to initial state, after form submission (clear all form fields)
 		setFormState({
