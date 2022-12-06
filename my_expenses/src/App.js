@@ -11,11 +11,13 @@ export class Expense {
 	item;
 	description;
 	date;
+	id;
 
 	constructor(price, item, description) {
 		this.price = price;
 		this.item = item;
 		this.description = description;
+		this.id = Math.random();
 		this.date = new Date();
 	}
 }
@@ -27,6 +29,7 @@ function App() {
 
 	//Adds handler on Add expense event
 	const addExpense = (savedExpenseData) => {
+		//gets the saved data from the form and creates a new object with the constructor.
 		const addedExpense = new Expense(
 			savedExpenseData.price,
 			savedExpenseData.item,
