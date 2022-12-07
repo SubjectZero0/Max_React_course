@@ -13,30 +13,26 @@ export class Expense {
 	date;
 	id;
 
-	constructor(price, item, description) {
+	constructor(price, item, description, date) {
 		this.price = price;
 		this.item = item;
 		this.description = description;
 		this.id = Math.random();
-		this.date = new Date();
+		this.date = new Date(date);
 	}
 }
 //create test Expense
-const expenses = [new Expense(10, "Water Bill", "Bill for having water")];
+const expenses = [];
 
 function App() {
-	const [expenseState, setExpenseState] = useState(expenses);
+	const [expensesAll, setExpensesAll] = useState(expenses);
 
 	//Adds handler on Add expense event
 	const addExpense = (savedExpenseData) => {
 		//gets the saved data from the form and creates a new object with the constructor.
-		const addedExpense = new Expense(
-			savedExpenseData.price,
-			savedExpenseData.item,
-			savedExpenseData.description,
-			new Date(savedExpenseData.date)
-		);
-		setExpenseState((prevExpenses) => {
+		const addedExpense = new Expense(savedExpenseData.price, savedExpenseData.item, savedExpenseData.description, savedExpenseData.date);
+		console.log(addedExpense);
+		setExpensesAll((prevExpenses) => {
 			return [addedExpense, ...prevExpenses];
 		});
 	};
@@ -47,7 +43,7 @@ function App() {
 			{/*NewExpense component contains the ExpenseForm component and gets the data entered, through state changes.   */}
 			<NewExpense onAddExpenseHandler={addExpense} />
 
-			<Expenses items={expenseState} />
+			<Expenses items={expensesAll} />
 		</div>
 	);
 }
