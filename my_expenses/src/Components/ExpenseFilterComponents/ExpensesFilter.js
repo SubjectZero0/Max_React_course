@@ -9,6 +9,7 @@ const ExpensesFilter = (props) => {
 
 	const filterHandler = (event) => {
 		//event handler. onChange of chosen year, set state and send the data to Expenses.js
+
 		const chosenYear = event.target.value;
 		setFilterYear(chosenYear);
 		props.onChangeYear(chosenYear); //this function sends the year to parent component Expenses.js

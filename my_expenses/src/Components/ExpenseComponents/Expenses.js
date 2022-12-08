@@ -1,8 +1,11 @@
 import "./Expenses.css";
+import "./ExpenseItem.css";
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "../ExpenseFilterComponents/ExpensesFilter";
 import { useState } from "react";
+
+//--------------------------------------------------------------------
 
 function Expenses(props) {
 	//state Hook. Initializes on 2022
@@ -13,15 +16,22 @@ function Expenses(props) {
 		setYear(chosenYearFilter);
 	};
 
+	//filters all the expenses to the chosen year
 	const filterExpenses = props.items.filter((expense) => String(expense.date.getFullYear()) === year);
+
+	let expenseItemContent = <h2 className="expense-item">No available Items</h2>;
+
+	if (filterExpenses.length > 0) {
+		expenseItemContent = filterExpenses.map((expense) => (
+			<ExpenseItem key={expense.id} item={expense.item} description={expense.description} price={expense.price} date={expense.date} />
+		));
+	}
 
 	return (
 		<div>
 			<Card className="expenses">
 				<ExpensesFilter onChangeYear={changeYear} />
-				{filterExpenses.map((expense) => (
-					<ExpenseItem key={expense.id} item={expense.item} description={expense.description} price={expense.price} date={expense.date} />
-				))}
+				{expenseItemContent}
 			</Card>
 		</div>
 	);
