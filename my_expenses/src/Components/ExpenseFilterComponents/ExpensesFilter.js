@@ -19,7 +19,7 @@ const ExpensesFilter = (props) => {
 	return (
 		<div className="expenses-filter">
 			<div className="expenses-filter__control">
-				<label>Filter by year</label>
+				<label>Filter by year: {filterYear}</label>
 				<select onChange={filterHandler}>
 					{yearOptions.map((year, index) => {
 						return (
