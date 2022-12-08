@@ -1,6 +1,8 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
 
+//----------------------------------------------
+
 const itemState = {
 	item: "",
 	description: "",
@@ -34,18 +36,22 @@ function ExpenseForm(props) {
 			...formState,
 		};
 
-		//communicate with parent component (NewExpense) and transfer the entered data.
-		props.saveOnSubmitHandler(submitData);
-
-		//reset state to initial state, after form submission (clear all form fields)
-		setFormState({
-			...itemState,
-		});
-		return submitData;
+		//Perform form validation. Items cannot have empty values.
+		if (Object.values(submitData).includes("")) {
+			alert("Item cannot have empty values.");
+		} else {
+			//communicate with parent component (NewExpense) and transfer the entered data.
+			props.saveOnSubmitHandler(submitData);
+			//reset state to initial state, after form submission (clear all form fields)
+			setFormState({
+				...itemState,
+			});
+			return submitData;
+		}
 	};
 
-	//function to generate the form based on the item object properties.
-	const generateDiv = (key) => {
+	//function to generate the form based on the Expense class properties.
+	const generateForm = (key) => {
 		return (
 			<div key={key} className="new-expense__control">
 				<label>{`${key}`.toUpperCase()}: </label>
@@ -60,7 +66,7 @@ function ExpenseForm(props) {
 	};
 	return (
 		<form onSubmit={submitHandler}>
-			<div className="new-expense__controls">{Object.keys(itemState).map((key) => generateDiv(key))}</div>
+			<div className="new-expense__controls">{Object.keys(itemState).map((key) => generateForm(key))}</div>
 
 			<div className="new-expense__actions">
 				<button type="submit">Add Expense!</button>
