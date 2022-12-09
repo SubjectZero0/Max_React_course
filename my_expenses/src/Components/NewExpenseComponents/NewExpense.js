@@ -15,7 +15,7 @@ function NewExpense(props) {
 
 	return (
 		<div className="new-expense">
-			<ExpenseForm saveOnSubmitHandler={submitDataHandler} />
+			<ExpenseForm saveOnSubmitHandler={submitDataHandler} onCancelClick={props.onCancelClick} />
 		</div>
 	);
 }

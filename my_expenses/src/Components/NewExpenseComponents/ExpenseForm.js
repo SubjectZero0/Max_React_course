@@ -3,7 +3,7 @@ import { useState } from "react";
 
 //----------------------------------------------
 
-const itemState = {
+const item = {
 	item: "",
 	description: "",
 	price: "",
@@ -11,14 +11,14 @@ const itemState = {
 };
 
 function ExpenseForm(props) {
-	//Hook "useState" for the entire form.
-	const [formState, setFormState] = useState(itemState);
+	// State Hook for the entire form.
+	const [form, setForm] = useState(item);
 
-	//Handler for event => on form input. State updater.
 	const formInputHandler = (e) => {
+		//Handler for event => on form input save the input. State updater.
 		const targetedKey = e.target.id;
 
-		setFormState((previousState) => {
+		setForm((previousState) => {
 			return {
 				...previousState,
 				[targetedKey]: e.target.value,
@@ -26,14 +26,14 @@ function ExpenseForm(props) {
 		});
 	};
 
-	//submit button event handler
 	const submitHandler = (e) => {
+		//submit button event handler
 		e.preventDefault(); //prevent page reload
 
 		//get the latest state data and return it
 		//this data will be used for form submition
 		const submitData = {
-			...formState,
+			...form,
 		};
 
 		//Perform form validation. Items cannot have empty values.
@@ -43,33 +43,41 @@ function ExpenseForm(props) {
 			//communicate with parent component (NewExpense) and transfer the entered data.
 			props.saveOnSubmitHandler(submitData);
 			//reset state to initial state, after form submission (clear all form fields)
-			setFormState({
-				...itemState,
+			setForm({
+				...item,
 			});
 			return submitData;
 		}
 	};
 
-	//function to generate the form based on the Expense class properties.
 	const generateForm = (key) => {
+		//function to generate the form based on the Expense class properties.
 		return (
 			<div key={key} className="new-expense__control">
 				<label>{`${key}`.toUpperCase()}: </label>
 				<input
 					id={`${key}`}
 					type={`${key === "price" ? "number" : key === "date" ? "date" : "text"}`}
-					value={formState[key]} //needed in order to clear form on submission
+					value={form[key]} //needed in order to clear form on submission
 					onChange={formInputHandler}
 				/>
 			</div>
 		);
 	};
+
+	const renderButton = () => {
+		props.onCancelClick();
+	};
+
 	return (
 		<form onSubmit={submitHandler}>
-			<div className="new-expense__controls">{Object.keys(itemState).map((key) => generateForm(key))}</div>
+			<div className="new-expense__controls">{Object.keys(item).map((key) => generateForm(key))}</div>
 
 			<div className="new-expense__actions">
 				<button type="submit">Add Expense!</button>
+				<button type="button" onClick={renderButton}>
+					Cancel
+				</button>
 			</div>
 		</form>
 	);

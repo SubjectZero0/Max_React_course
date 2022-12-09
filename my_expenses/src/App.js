@@ -1,7 +1,9 @@
 //imports
+import { useState } from "react";
+//--------------------------------
 import NewExpense from "./Components/NewExpenseComponents/NewExpense";
 import Expenses from "./Components/ExpenseComponents/Expenses";
-import { useState } from "react";
+import RenderForm from "./Components/NewExpenseComponents/RenderForm";
 //------------------------
 
 export class Expense {
@@ -21,11 +23,12 @@ export class Expense {
 		this.date = new Date(date);
 	}
 }
-//create test Expense
+//create expense array of objects
 const expenses = [];
 
 function App() {
 	const [expensesAll, setExpensesAll] = useState(expenses);
+	const [newExpenseContent, setnewExpenseContent] = useState("renderButton");
 
 	//Adds handler on Add expense event
 	const addExpense = (savedExpenseData) => {
@@ -37,12 +40,24 @@ function App() {
 		});
 	};
 
+	const renderForm = () => {
+		setnewExpenseContent("renderForm");
+	};
+
+	const renderButton = () => {
+		setnewExpenseContent("renderButton");
+	};
+
+	let newExpenseContentRendered = <RenderForm onClickHandler={renderForm} />;
+	if (newExpenseContent === "renderForm") {
+		newExpenseContentRendered = <NewExpense onAddExpenseHandler={addExpense} onCancelClick={renderButton} />;
+	}
+
 	//render the page
 	return (
 		<div className="App">
 			{/*NewExpense component contains the ExpenseForm component and gets the data entered, through state changes.   */}
-			<NewExpense onAddExpenseHandler={addExpense} />
-
+			{newExpenseContentRendered}
 			<Expenses items={expensesAll} />
 		</div>
 	);
