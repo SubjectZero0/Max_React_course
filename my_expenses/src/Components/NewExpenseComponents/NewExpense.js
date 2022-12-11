@@ -2,8 +2,8 @@ import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 function NewExpense(props) {
-	//get the data from the expense form and give them an id
 	const submitDataHandler = (enteredData) => {
+		//get the data from the expense form
 		const savedData = {
 			...enteredData,
 		};

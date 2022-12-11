@@ -19,9 +19,11 @@ function Expenses(props) {
 	//filters all the expenses to the chosen year
 	const filterExpenses = props.items.filter((expense) => String(expense.date.getFullYear()) === year);
 
+	//set a default text for non existing expenses
 	let expenseItemContent = <h2 className="expense-item">No available Items</h2>;
 
 	if (filterExpenses.length > 0) {
+		//when an expense is added, render it dynamically
 		expenseItemContent = filterExpenses.map((expense) => (
 			<ExpenseItem key={expense.id} item={expense.item} description={expense.description} price={expense.price} date={expense.date} />
 		));

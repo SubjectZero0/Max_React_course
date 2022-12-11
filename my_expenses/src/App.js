@@ -41,22 +41,26 @@ function App() {
 	};
 
 	const renderForm = () => {
+		//State manager to render Form
 		setnewExpenseContent("renderForm");
 	};
 
 	const renderButton = () => {
+		//State manager to render button
 		setnewExpenseContent("renderButton");
 	};
 
+	//by default, render an "Add a New Expense" button
 	let newExpenseContentRendered = <RenderForm onClickHandler={renderForm} />;
+
 	if (newExpenseContent === "renderForm") {
+		//when the "Add a New Expense" button is clicked, render the Expense form. In the form, if "Cancel" is clicked, render the "Add a New Expense" button again.
 		newExpenseContentRendered = <NewExpense onAddExpenseHandler={addExpense} onCancelClick={renderButton} />;
 	}
 
 	//render the page
 	return (
 		<div className="App">
-			{/*NewExpense component contains the ExpenseForm component and gets the data entered, through state changes.   */}
 			{newExpenseContentRendered}
 			<Expenses items={expensesAll} />
 		</div>

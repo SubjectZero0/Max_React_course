@@ -66,6 +66,7 @@ function ExpenseForm(props) {
 	};
 
 	const renderButton = () => {
+		//state manager for "Cancel" button.
 		props.onCancelClick();
 	};
 
