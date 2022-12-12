@@ -3,6 +3,7 @@ import "./ExpenseItem.css";
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "../ExpenseFilterComponents/ExpensesFilter";
+import ExpensesChart from "./ExpensesChart";
 import { useState } from "react";
 
 //--------------------------------------------------------------------
@@ -25,7 +26,9 @@ function Expenses(props) {
 	if (filterExpenses.length > 0) {
 		//when an expense is added, render it dynamically
 		expenseItemContent = filterExpenses.map((expense) => (
-			<ExpenseItem key={expense.id} item={expense.item} description={expense.description} price={expense.price} date={expense.date} />
+			<div key={expense.id}>
+				<ExpenseItem item={expense.item} description={expense.description} price={expense.price} date={expense.date} />
+			</div>
 		));
 	}
 
@@ -33,6 +36,7 @@ function Expenses(props) {
 		<div>
 			<Card className="expenses">
 				<ExpensesFilter onChangeYear={changeYear} />
+				<ExpensesChart expenses={filterExpenses} />
 				{expenseItemContent}
 			</Card>
 		</div>
