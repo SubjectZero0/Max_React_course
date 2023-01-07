@@ -42,9 +42,19 @@
 	}
 }
 
-.card__text {
+h1.card__text {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	overflow-wrap: break-word;
 	color: rgb(235, 235, 232);
+	justify-content: center;
+}
+p.card__text {
+	display: flex;
+	flex-direction: row;
+	overflow-wrap: break-word;
+	color: rgb(235, 235, 232);
+	font-size: larger;
+	justify-content: center;
+	text-align: center;
 }
