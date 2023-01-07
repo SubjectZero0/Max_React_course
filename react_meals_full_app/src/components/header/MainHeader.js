@@ -7,7 +7,7 @@ const MainHeader = () => {
 		<Fragment>
 			<NavBar />
 			<div className={styles.main_header__image}>
-				<img src="/platter.jpg" />
+				<img src="/platter.jpg" alt="" />
 			</div>
 		</Fragment>
 	);
