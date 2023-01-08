@@ -4,17 +4,20 @@
 	overflow: scroll;
 
 	background-color: rgb(240, 240, 235);
-	box-shadow: 2px 4px 15px 16px rgb(0, 0, 0);
+	box-shadow: 4px 1px 12px 17px rgba(0, 0, 0, 0.562);
+	border-radius: 20px;
 	width: 60%;
 	height: 50%;
-	border-radius: 20px;
+
 	z-index: 5;
 
 	position: absolute;
 	margin-top: 3%;
 	margin-bottom: 40px;
-	top: 78%;
+	top: 73%;
 	right: 20%;
+
+	scroll-behavior: smooth;
 }
 
 @media screen and (max-width: 1440px) {
@@ -22,7 +25,7 @@
 		width: 85%;
 		position: absolute;
 
-		top: 81%;
+		top: 76%;
 		left: 7.5%;
 	}
 }
@@ -33,7 +36,7 @@
 
 		position: absolute;
 
-		top: 81%;
+		top: 76%;
 		left: 7.5%;
 	}
 }
