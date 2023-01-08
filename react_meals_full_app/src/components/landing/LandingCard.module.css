@@ -1,5 +1,6 @@
 .card__container {
-	display: flexbox;
+	display: flex;
+	flex-direction: column;
 	width: 50%;
 	height: 30%;
 
@@ -43,15 +44,11 @@
 }
 
 h1.card__text {
-	display: flex;
-	flex-direction: row;
 	overflow-wrap: break-word;
 	color: rgb(235, 235, 232);
-	justify-content: center;
+	text-align: center;
 }
 p.card__text {
-	display: flex;
-	flex-direction: row;
 	overflow-wrap: break-word;
 	color: rgb(235, 235, 232);
 	font-size: larger;
