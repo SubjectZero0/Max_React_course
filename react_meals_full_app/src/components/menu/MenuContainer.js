@@ -9,7 +9,7 @@ class FoodItems {
 	foodName;
 	foodPrice;
 	foodDesc;
-	#id;
+	id;
 	constructor(name, price, desc) {
 		this.foodName = name;
 		this.foodPrice = price;
@@ -51,7 +51,7 @@ console.log(menuItems);
 
 const MenuContainer = () => {
 	return (
-		<div>
+		<div className={styles.menu_container}>
 			{menuItems.map((item) => {
 				return <MenuItem key={item.id} item={item} />;
 			})}
