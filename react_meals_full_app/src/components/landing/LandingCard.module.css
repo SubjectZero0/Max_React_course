@@ -16,7 +16,7 @@
 	border-color: rgb(49, 45, 45);
 
 	position: absolute;
-	top: 50%;
+	top: 45%;
 	left: 25%;
 	z-index: 5;
 }
@@ -27,7 +27,7 @@
 		min-height: 10%;
 		position: absolute;
 
-		top: 50%;
+		top: 45%;
 		left: 10%;
 	}
 }
@@ -38,7 +38,7 @@
 		min-height: 10%;
 		position: absolute;
 
-		top: 50%;
+		top: 45%;
 		left: 10%;
 	}
 }
