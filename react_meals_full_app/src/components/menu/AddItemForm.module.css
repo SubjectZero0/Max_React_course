@@ -1,0 +1,116 @@
+.add_item__form {
+	display: flex;
+	flex-direction: column;
+}
+.add_item__input {
+	display: inline-flex;
+	/* width: 3%; */
+
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+
+	padding: 3px;
+}
+
+.add_item__input:focus {
+	outline: none;
+}
+
+label {
+	font-weight: bold;
+	padding: 4px;
+}
+/* ---------------------------------------------------------- */
+/* hide number arrows on input tags for mozilla and chrome */
+input[type="number"] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+	margin: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+/* ---------------------------------------------------------- */
+.add_item__button {
+	display: flex;
+	flex-direction: column;
+
+	width: 8%;
+
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+
+	background-color: rgb(168, 7, 7);
+	color: beige;
+	font-weight: bold;
+
+	cursor: pointer;
+
+	padding: 3px;
+	margin: 5px;
+}
+
+.add_item__button:hover {
+	background-color: rgb(226, 9, 9);
+}
+.add_item__button:active {
+	transform: scale(1.05, 1.05);
+	transition-duration: 0.01s;
+}
+/* ---------------------------------------------------------- */
+/* Add button and input responsiveness */
+
+@media screen and (max-width: 360px) {
+	.add_item__button {
+		width: 50%;
+	}
+
+	.add_item__input {
+		width: 7%;
+	}
+}
+@media screen and (min-width: 361px) {
+	.add_item__button {
+		width: 50%;
+	}
+	.add_item__input {
+		width: 7%;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.add_item__button {
+		width: 50%;
+	}
+	.add_item__input {
+		width: 7%;
+	}
+}
+@media screen and (min-width: 760px) {
+	.add_item__button {
+		width: 50%;
+	}
+	.add_item__input {
+		width: 7%;
+	}
+}
+
+@media screen and (min-width: 1020px) {
+	.add_item__button {
+		width: 50%;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	.add_item__button {
+		width: 50%;
+	}
+}
+/* ---------------------------------------------------------- */

@@ -9,8 +9,10 @@ function App() {
 	return (
 		<React.Fragment>
 			<MainHeader />
-			<LandingCard />
-			<MenuContainer />
+			<div>
+				<LandingCard />
+				<MenuContainer />
+			</div>
 		</React.Fragment>
 	);
 }
