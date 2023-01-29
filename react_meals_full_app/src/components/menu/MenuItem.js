@@ -13,7 +13,6 @@ const MenuItem = (props) => {
 					<p>{props.item.foodDesc}</p>
 					<h3 className={styles.menu_item__item_price}>{props.item.foodPrice}</h3>
 				</div>
-
 				<AddItemForm />
 			</div>
 		</Fragment>

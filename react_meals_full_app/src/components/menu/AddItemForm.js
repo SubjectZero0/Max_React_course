@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AddItemForm.module.css";
+
+// -------------------------------------------------------
+
 const AddItemForm = () => {
+	const [amount, setAmount] = useState();
+
+	// handle amount change
+	const handleAmountChange = (e) => {
+		setAmount(e.target.value);
+	};
+
+	// handle submition
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	};
@@ -9,7 +20,7 @@ const AddItemForm = () => {
 		<form className={styles.add_item__form} onSubmit={handleSubmit}>
 			<div>
 				<label>Amount: </label>
-				<input className={styles.add_item__input} type="number" name="amount" />
+				<input className={styles.add_item__input} onChange={handleAmountChange} type="number" name="amount" />
 			</div>
 
 			<div>
