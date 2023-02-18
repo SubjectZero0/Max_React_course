@@ -1,4 +1,6 @@
 export class Todo {
+	// model for Todos
+
 	id: string;
 	text: string;
 
