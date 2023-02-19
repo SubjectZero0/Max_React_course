@@ -1,30 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./App.module.css";
 
-import { Todo } from "./models/todo";
 import Todos from "./components/Todos";
 import NewTodoForm from "./components/NewTodoForm";
+import TodosContextProvider from "./components/store/TodosContext";
 
-function App() {
+const App: React.FC = () => {
 	//
-	const [todosArr, setTodosArr] = useState<Todo[]>([]);
-
-	const getNewTodo = (submittedTodo: string) => {
-		setTodosArr((prev: Todo[]) => {
-			return [...prev, new Todo(submittedTodo)];
-		});
-	};
-
-	const getUpdatedTodos = (updatedTodos: Todo[]) => {
-		setTodosArr(updatedTodos);
-	};
-
 	return (
-		<div>
-			<Todos items={todosArr} getUpdatedTodos={getUpdatedTodos} />
-			<NewTodoForm NewTodo={getNewTodo} />
-		</div>
+		<TodosContextProvider>
+			<Todos />
+			<NewTodoForm />
+		</TodosContextProvider>
 	);
-}
+};
 
 export default App;

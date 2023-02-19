@@ -9,3 +9,9 @@ export class Todo {
 		this.id = new Date().toISOString();
 	}
 }
+
+export type TodoContextType = {
+	todos: Todo[];
+	newTodo: (submittedTodo: string) => void;
+	removeTodo: (updatedTodos: Todo[]) => void;
+};

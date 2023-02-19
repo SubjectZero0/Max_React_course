@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Todo } from "../models/todo";
+import { TodosContext } from "./store/TodosContext";
 
 const RemoveTodoBtn: React.FC<{
 	items: Todo[];
 	itemId: Todo["id"];
-	updateTodoHandler: (items: Todo[]) => void;
 }> = (props) => {
 	//
+	const todoCtx = useContext(TodosContext);
+
 	const removeTodoHandler: React.MouseEventHandler = (e: React.MouseEvent) => {
 		e.preventDefault();
 
@@ -14,7 +16,7 @@ const RemoveTodoBtn: React.FC<{
 			return item["id"] !== props.itemId;
 		});
 
-		props.updateTodoHandler(updatedTodoItems);
+		todoCtx.removeTodo(updatedTodoItems);
 	};
 
 	return <button onClick={removeTodoHandler}>Remove Todo</button>;
