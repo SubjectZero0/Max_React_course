@@ -6,8 +6,8 @@ import Todos from "./components/Todos";
 import NewTodoForm from "./components/NewTodoForm";
 
 function App() {
-	const todos = [new Todo("Learn React"), new Todo("Learn TypeScript")];
-	const [todosArr, setTodosArr] = useState(todos);
+	//
+	const [todosArr, setTodosArr] = useState<Todo[]>([]);
 
 	const getNewTodo = (submittedTodo: string) => {
 		setTodosArr((prev: Todo[]) => {
@@ -15,9 +15,13 @@ function App() {
 		});
 	};
 
+	const getUpdatedTodos = (updatedTodos: Todo[]) => {
+		setTodosArr(updatedTodos);
+	};
+
 	return (
 		<div>
-			<Todos items={todosArr} />
+			<Todos items={todosArr} getUpdatedTodos={getUpdatedTodos} />
 			<NewTodoForm NewTodo={getNewTodo} />
 		</div>
 	);
